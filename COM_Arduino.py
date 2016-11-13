@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Communication Program for Arduino Rev0.1-17/09/2016
-# For 2 Arduino Uno through Serial USB
+# For 2 Arduino Uno through Serial  USB
 
 import serial   # Serial COM Library
 import datetime # For Date & Time 
