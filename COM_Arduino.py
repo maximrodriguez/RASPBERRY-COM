@@ -13,6 +13,8 @@ flag1=0
 flag2=0
 
 Data_Temp_filename="/home/max/Projects/Pi/Pi_Programs/Data/Room_temp.txt"
+Data_SP_PH_filename="/home/max/Projects/Pi/Pi_Programs/Data/Pool_SP_PH.txt"
+Data_PV_PH_filename="/home/max/Projects/Pi/Pi_Programs/Data/Pool_PV_PH.txt"
 
 ser1 = serial.Serial('/dev/ttyACM0', 9600)
 ser2 = serial.Serial('/dev/ttyACM1', 9600)
@@ -28,6 +30,9 @@ while True:
          flag1=1
          ser1.write('5')
          Temperature= ser1.readline()
+         ser2.write('5')
+         SP_PH= ser2.readline()
+         PV_PH= ser2.readline()
          Date= str(MyDateTime.day)+"/"+ str(MyDateTime.month)+"/"+ str(MyDateTime.year)
          Time = str(MyDateTime.hour)+":"+ str(MyDateTime.minute)+":"+ str(MyDateTime.second)
          filename="/home/max/Projects/Pi/Pi_Programs/Data/"+str(MyDateTime.year)+str(MyDateTime.month)+str(MyDateTime.day)+"_Data.txt"
@@ -38,9 +43,15 @@ while True:
          datafile.write(",")
          datafile.write(Temperature)
          datafile.close()
-         data_Temp=open(Data_Temp_filename,"w")
-         data_Temp.write(Temperature)
-         data_Temp.close()
+         data_file=open(Data_Temp_filename,"w")
+         data_file.write(Temperature)
+         data_file.close()
+         data_file=open(Data_SP_PH_filename,"w")
+         data_file.write(SP_PH)
+         data_file.close()
+         data_file=open(Data_PV_PH_filename,"w")
+         data_file.write(PV_PH)
+         data_file.close()     
     if (second!=0 and flag1==1):
          flag1=0
     if (minute==59 and second==30 and flag2==0):
