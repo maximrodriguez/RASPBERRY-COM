@@ -16,10 +16,18 @@ Data_Temp_filename="/home/max/Projects/Pi/Pi_Programs/Data/Room_temp.txt"
 Data_SP_PH_filename="/home/max/Projects/Pi/Pi_Programs/Data/Pool_SP_PH.txt"
 Data_PV_PH_filename="/home/max/Projects/Pi/Pi_Programs/Data/Pool_PV_PH.txt"
 
+
 ser1 = serial.Serial('/dev/ttyACM0', 9600)
 ser2 = serial.Serial('/dev/ttyACM1', 9600)
 time.sleep(4)
 
+ser1.write('1')
+DevID1= ser1.readline()
+if (DevID1=="PH"):
+	ser1 = serial.Serial('/dev/ttyACM1', 9600)
+	ser2 = serial.Serial('/dev/ttyACM0', 9600)
+	
+time.sleep(4)
 
 while True:
     MyDateTime = datetime.datetime.now()
