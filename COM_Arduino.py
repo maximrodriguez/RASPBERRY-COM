@@ -41,6 +41,10 @@ while True:
          ser2.write('5')
          SP_PH= ser2.readline()
          PV_PH= ser2.readline()
+		 Pump_PH= ser2.readline()
+		 Power_Down_PH= ser2.readline()
+		 if (Power_Down_PH==1):
+		          PV_PH=0
          Date= str(MyDateTime.day)+"/"+ str(MyDateTime.month)+"/"+ str(MyDateTime.year)
          Time = str(MyDateTime.hour)+":"+ str(MyDateTime.minute)+":"+ str(MyDateTime.second)
          filename="/home/max/Projects/Pi/Pi_Programs/Data/"+str(MyDateTime.year)+str(MyDateTime.month)+str(MyDateTime.day)+"_Data.txt"
@@ -50,6 +54,14 @@ while True:
          datafile.write(Time)
          datafile.write(",")
          datafile.write(Temperature)
+		 datafile.write(",")
+         datafile.write(SP_PH)
+		 datafile.write(",")
+         datafile.write(PV_PH)
+		 datafile.write(",")
+         datafile.write(Pump_PH)
+		 datafile.write(",")
+         datafile.write(Power_Down_PH)		 
          datafile.close()
          data_file=open(Data_Temp_filename,"w")
          data_file.write(Temperature)
