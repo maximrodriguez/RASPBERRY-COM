@@ -47,8 +47,8 @@ while True:
          SP_PH=SP_PH.rstrip('\r\n')
          PV_PH=PV_PH.rstrip('\r\n')
          Pump_PH=Pump_PH.rstrip('\r\n')              
-         if (Power_Down_PH==1):
-                 PV_PH=0
+         if (Power_Down_PH.rstrip('\r\n')=="1"):
+                 PV_PH="0"
          Date= str(MyDateTime.day)+"/"+ str(MyDateTime.month)+"/"+ str(MyDateTime.year)
          Time = str(MyDateTime.hour)+":"+ str(MyDateTime.minute)+":"+ str(MyDateTime.second)
          filename="/home/max/Projects/Pi/Pi_Programs/Data/"+str(MyDateTime.year)+str(MyDateTime.month)+str(MyDateTime.day)+"_Data.txt"
